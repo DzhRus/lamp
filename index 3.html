@@ -1,0 +1,558 @@
+<style>
+	.stage-container {
+	  width: 100%;
+	  max-width: 1204px;
+	  margin-left: auto;
+	  margin-right: auto;
+	  padding: 20px 15px;
+	  color: #f3f3f3;
+	  box-sizing: border-box;
+	}
+
+	@media (min-width: 901px) {
+	  .stage-box {
+	    display: flex;
+	    align-items: flex-start;
+	  }
+	  .stage-box__img {
+	    width: 63.885%;
+	    margin-right: 17px;
+	    flex-shrink: 0;
+	    position: relative;
+	  }
+	}
+
+	.stage-box__content {
+	  flex-grow: 1;
+	  max-width: 100%;
+	  min-width: 1px;
+	  padding-top: 103px;
+	}
+
+	@media (max-width: 1100px) {
+	  .stage-box__content {
+	    padding-top: 20px;
+	  }
+	}
+
+	/* STAGE-DIAGRAM */
+	@media (max-width: 900px) {
+	  .stage-diagram {
+	    max-width: 600px;
+	    margin: 0 auto 20px;
+	  }
+	}
+
+	.stage-diagram .is-hover path {
+	  fill: #6776F6;
+	}
+
+	.stage-diagram .is-active line {
+	  stroke-opacity: 1;
+	  transition: all .5s;
+	}
+
+	.stage-diagram .is-active circle {
+	  stroke: #6776F6;
+	  transition: all .5s;
+	}
+
+	.stage-diagram .is-active path {
+	  fill: #6776F6;
+	  transition: all .5s;
+	}
+
+	.stage-diagram svg {
+	  width: 100%;
+	  height: auto;
+	  display: block;
+	}
+
+	/* ST-OFFSET */
+	@media (min-width: 901px) {
+	  .st-offset-1 {
+	    bottom: 23%;
+	    right: 72.2%;
+	  }
+	  .st-offset-2 {
+	    bottom: 38%;
+	    right: 55.3%;
+	  }
+	  .st-offset-3 {
+	    bottom: 53%;
+	    right: 39.5%;
+	  }
+	  .st-offset-4 {
+	    bottom: 72%;
+	    right: 22.5%;
+	  }
+	  .st-offset-5 {
+	    bottom: 93%;
+	    right: 5%;
+	  }
+	  .stage-buttons__item {
+	    position: absolute;
+	  }
+	}
+
+	/* STAGE-BUTTONS */
+	@media (max-width: 900px) {
+	  .stage-buttons {
+	    display: flex;
+	    flex-wrap: wrap;
+	    margin: 0 -10px;
+	    padding-bottom: 10px;
+	    border-bottom: 1px solid rgba(233, 233, 241, 0.15);
+	  }
+	  .stage-buttons__item {
+	    width: 33.333%;
+	    padding: 0 10px;
+	    margin-bottom: 10px;
+	    box-sizing: border-box;
+	  }
+	}
+
+	@media (max-width: 575px) {
+	  .stage-buttons__item {
+	    width: 50%;
+	  }
+	}
+
+	/* ST-BTN */
+	.st-btn {
+	  background-color: #6776F6;
+	  border-radius: 13px;
+	  color: #505FDF;
+	  font: 500 22px/1.25 'Syne', sans-serif;
+	  display: inline-block;
+	  vertical-align: middle;
+	  padding: .68182em 1em;
+	  min-width: 8.40909em;
+	  text-align: center;
+	  box-sizing: border-box;
+	  cursor: pointer;
+	  position: relative;
+	  transition: all .3s;
+	}
+
+	@media (max-width: 1100px) {
+	  .st-btn {
+	    font-size: 18px;
+	  }
+	}
+
+	@media (max-width: 900px) {
+	  .st-btn {
+	    width: 100%;
+	    font-size: 20px;
+	  }
+	}
+
+	.st-btn:hover {
+	  background-color: #7778E0;
+	  color: #423799;
+	}
+
+	.st-btn:before, .st-btn:after {
+	  content: '';
+	  position: absolute;
+	}
+
+	.st-btn:before {
+	  border-radius: inherit;
+	  border: 2px solid currentColor;
+	  top: 3px;
+	  right: 3px;
+	  bottom: 3px;
+	  left: 3px;
+	}
+
+	@media (min-width: 901px) {
+	  .st-btn:after {
+	    width: 14px;
+	    height: 14px;
+	    background-color: inherit;
+	    border-bottom: 2px solid currentColor;
+	    border-right: 2px solid currentColor;
+	    transform: rotate(45deg);
+	    top: 100%;
+	    right: 28px;
+	    z-index: 5;
+	    margin-top: -12px;
+	  }
+	}
+
+	@media (min-width: 901px) {
+	  .st-btn__title {
+	    background-color: inherit;
+	  }
+	  .st-btn__title:after {
+	    content: '';
+	    position: absolute;
+	    width: 18px;
+	    height: 18px;
+	    transform: rotate(45deg);
+	    background-color: inherit;
+	    top: 100%;
+	    margin-top: -11px;
+	    right: 27px;
+	  }
+	}
+
+	.st-btn.is-active {
+	  color: #f3f3f3;
+	  pointer-events: none;
+	}
+
+	/* STAGE */
+	.stage {
+	  display: none;
+	  font: 400 20px/1.5 'VelaSans-Regular', sans-serif;
+	}
+
+	@media (min-width: 901px) {
+	  .stage {
+	    max-width: 370px;
+	  }
+	}
+
+	@media (max-width: 1100px) {
+	  .stage {
+	    font-size: 18px;
+	  }
+	}
+
+	@media (max-width: 767px) {
+	  .stage {
+	    font-size: 16px;
+	  }
+	}
+
+	.stage.is-show {
+	  display: block;
+	}
+
+	.stage__title {
+	  font-weight: 700;
+	  font-size: 24px;
+	  font-family: VelaSans-Bold;
+	  line-height: 1.25;
+	  margin: 0 0 1.25em;
+	}
+
+	@media (min-width: 901px) and (max-width: 1100px) {
+	  .stage__title {
+	    font-size: 22px;
+	  }
+	}
+
+	.stage__content {
+	  margin-bottom: 48px;
+	}
+
+	.stage__content:last-child {
+	  margin-bottom: 0;
+	}
+
+	@media (max-width: 1100px) {
+	  .stage__content {
+	    margin-bottom: 30px;
+	  }
+	}
+
+	.stage p {
+	  margin: 0 0 1.5em;
+	}
+
+	.stage__link {
+	  color: inherit;
+	  font-weight: 700;
+	  font-family: VelaSans-Bold;
+	  text-decoration: underline;
+	}
+
+	.stage__btn {
+	  text-decoration: none;
+	  color: inherit;
+	  display: inline-flex;
+	  align-items: center;
+	  vertical-align: middle;
+	  transition: transform .3s;
+	  font-weight: 700;
+	  font-family: VelaSans-Bold;
+	}
+
+	@media (min-width: 991px) {
+	  .stage__btn:hover {
+	    transform: translateX(8px);
+	  }
+	}
+
+	.stage__btn:hover .stage__btn-icon {
+	  background-color: #6776F6;
+	  color: #fff;
+	}
+
+	.stage__btn-icon {
+	  width: 68px;
+	  height: 68px;
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  background-color: #f3f3f3;
+	  border-radius: 19px;
+	  flex-shrink: 0;
+	  margin-left: 27px;
+	  color: #5557D6;
+	  transition: all .3s;
+	}
+
+	a.stage__link:hover {
+	  text-decoration: none;
+	}	
+</style>	 
+
+    
+<!-- STAGE-CONTAINER START -->
+<div class="stage-container">
+
+	<div class="stage-box">
+		<div class="stage-box__img js-diagram">
+			<div class="stage-diagram">
+				<svg viewBox="0 0 754 637" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<line x1="703.875" y1="635.5" x2="0.875" y2="635.5" stroke="#6776F6" stroke-width="2"/>
+					<line x1="1.875" y1="53.9567" x2="1.87503" y2="636.543" stroke="#6776F6" stroke-width="2"/>
+					<path d="M751.492 2.32401C751.395 1.22372 750.424 0.41056 749.324 0.507758L731.394 2.0917C730.294 2.18889 729.48 3.15965 729.578 4.25993C729.675 5.36022 730.646 6.17338 731.746 6.07618L747.684 4.66823L749.092 20.6062C749.189 21.7065 750.16 22.5196 751.26 22.4224C752.36 22.3252 753.173 21.3545 753.076 20.2542L751.492 2.32401ZM2.97221 636.248C243.184 502.63 492.875 311.973 751.033 3.78428L747.967 1.21572C490.125 309.027 240.816 499.37 1.02779 632.752L2.97221 636.248Z" fill="#F3F3F3"/>
+					<g data-name="group-1" class="is-active">
+						<line x1="172.5" y1="52.9567" x2="172.5" y2="636.5" stroke="#6776F7" stroke-opacity="0.29" stroke-dasharray="10 10"/>
+						<line x1="703.875" y1="530.5" x2="0.875" y2="530.5" stroke="#6776F7" stroke-opacity="0.29" stroke-dasharray="10 10"/>
+						<circle cx="171.5" cy="530" r="16" fill="#F3F3F3" stroke-width="3"/>
+						<path d="M164 528.26H179.64V531.38H164V528.26ZM173.44 522.5V537.14H170.2V522.5H173.44Z" fill="#080613"/>	
+					</g>
+					<g data-name="group-2">
+						<line x1="703.875" y1="439.5" x2="0.875" y2="439.5" stroke="#6776F7" stroke-opacity="0.29" stroke-dasharray="10 10"/>
+						<line x1="300.5" y1="53" x2="300.5" y2="636.543" stroke="#6776F7" stroke-opacity="0.29" stroke-dasharray="10 10"/>
+						<circle cx="299.5" cy="439.5" r="14.5" fill="#F3F3F3" stroke-width="3"/>
+						<path d="M292 437.76H307.64V440.88H292V437.76ZM301.44 432V446.64H298.2V432H301.44Z" fill="#080613"/>
+					</g>
+					<g data-name="group-3">
+						<line x1="703.875" y1="341.5" x2="0.875" y2="341.5" stroke="#6776F7" stroke-opacity="0.29" stroke-dasharray="10 10"/>
+						<line x1="420.5" y1="53" x2="420.5" y2="636.543" stroke="#6776F7" stroke-opacity="0.29" stroke-dasharray="10 10"/>
+						<circle cx="419.875" cy="341.5" r="14.5" fill="#F3F3F3" stroke-width="3"/>
+						<path d="M412.375 339.76H428.015V342.88H412.375V339.76ZM421.815 334V348.64H418.575V334H421.815Z" fill="#080613"/>
+					</g>
+					<g data-name="group-4">
+						<line x1="703.875" y1="221" x2="0.875" y2="221" stroke="#6776F7" stroke-opacity="0.29" stroke-dasharray="10 10"/>
+						<line x1="549.5" y1="53" x2="549.5" y2="636.543" stroke="#6776F7" stroke-opacity="0.29" stroke-dasharray="10 10"/>
+						<circle cx="548.375" cy="221.5" r="14.5" fill="#F3F3F3" stroke-width="3"/>
+						<path d="M540.875 219.76H556.515V222.88H540.875V219.76ZM550.315 214V228.64H547.075V214H550.315Z" fill="#080613"/>
+					</g>
+					<g data-name="group-5">
+						<line x1="703.875" y1="79.5" x2="0.875" y2="79.5" stroke="#6776F7" stroke-opacity="0.29" stroke-dasharray="10 10"/>
+						<line x1="681.375" y1="53" x2="681.375" y2="636.543" stroke="#6776F7" stroke-opacity="0.29" stroke-dasharray="10 10"/>
+						<circle cx="681.015" cy="79.5" r="14.5" fill="#F3F3F3" stroke-width="3"/>
+						<path d="M673.515 77.76H689.155V80.88H673.515V77.76ZM682.955 72V86.64H679.715V72H682.955Z" fill="#080613"/>
+					</g>
+				</svg>
+			</div>	
+
+			<div class="stage-buttons">
+				<div class="stage-buttons__item st-offset-1">
+					<div data-group="group-1" class="st-btn is-active">
+						<span class="st-btn__title">Incorporation</span>
+					</div>
+				</div>
+				<div class="stage-buttons__item st-offset-2">
+					<div data-group="group-2" class="st-btn">
+						<span class="st-btn__title">Pre-seeding</span>
+					</div>
+				</div>
+				<div class="stage-buttons__item st-offset-3">
+					<div data-group="group-3" class="st-btn">
+						<span class="st-btn__title">Seed rounds</span>
+					</div>
+				</div>
+				<div class="stage-buttons__item st-offset-4">
+					<div data-group="group-4" class="st-btn">
+						<span class="st-btn__title">Scaling stage</span>
+					</div>
+				</div>
+				<div class="stage-buttons__item st-offset-5">
+					<div data-group="group-5" class="st-btn">
+						<span class="st-btn__title">IPO/exit</span>
+					</div>
+				</div>
+			</div>		
+		</div>
+
+
+		<div class="stage-box__content">
+			<!-- ITEM-1 START -->
+			<div data-stage="group-1" class="stage is-show">
+				<div class="stage__title">Incorporation</div>
+				<div class="stage__content">
+					<p>Start your journey by safeguarding your startup from unexpected issues straight from the beginning. This stage is typically financed by family, co-founders, or accelerators, and legal structuring is deemed unimportant.</p>
+					<p>Down the line, it pays to be <a href="#" class="stage__link">legally prepared</a> and structure financial management from the get-go and avoid costly challenges that may arise otherwise.</p>
+				</div>
+				<div class="stage__footer">
+					<a href="#" class="stage__btn">
+						<span class="stage__btn-txt">Choose stage</span>
+						<span class="stage__btn-icon">
+							<svg width="27" height="28">
+								<use xlink:href="#stage-arrow"></use>
+							</svg>
+						</span>				
+					</a>
+				</div>
+			</div>
+			<!-- ITEM-1 END -->
+
+
+			<!-- ITEM-2 START -->
+			<div  data-stage="group-2" class="stage">
+				<div class="stage__title">Pre-seeding</div>
+				<div class="stage__content">
+					<p>Start your journey by safeguarding your startup from unexpected issues straight from the beginning. This stage is typically financed by family, co-founders, or accelerators, and legal structuring is deemed unimportant.</p>
+				</div>
+				<div class="stage__footer">
+					<a href="#" class="stage__btn">
+						<span class="stage__btn-txt">Choose stage</span>
+						<span class="stage__btn-icon">
+							<svg width="27" height="28">
+								<use xlink:href="#stage-arrow"></use>
+							</svg>
+						</span>				
+					</a>
+				</div>
+			</div>
+			<!-- ITEM-2 END -->
+
+
+			<!-- ITEM-3 START -->
+			<div  data-stage="group-3" class="stage">
+				<div class="stage__title">Seed rounds</div>
+				<div class="stage__content">
+					<p>Down the line, it pays to be <a href="#" class="stage__link">legally prepared</a> and structure financial management from the get-go and avoid costly challenges that may arise otherwise.</p>
+				</div>
+				<div class="stage__footer">
+					<a href="#" class="stage__btn">
+						<span class="stage__btn-txt">Choose stage</span>
+						<span class="stage__btn-icon">
+							<svg width="27" height="28">
+								<use xlink:href="#stage-arrow"></use>
+							</svg>
+						</span>				
+					</a>
+				</div>
+			</div>
+			<!-- ITEM-3 END -->
+
+
+			<!-- ITEM-4 START -->
+			<div  data-stage="group-4" class="stage">
+				<div class="stage__title">Scaling stage</div>
+				<div class="stage__content">
+					<p>Start your journey by safeguarding your startup from unexpected issues straight from the beginning. This stage is typically financed by family, co-founders, or accelerators, and legal structuring is deemed unimportant.</p>
+					<p>Down the line, it pays to be <a href="#" class="stage__link">legally prepared</a> and structure financial management from the get-go and avoid costly challenges that may arise otherwise.</p>
+				</div>
+				<div class="stage__footer">
+					<a href="#" class="stage__btn">
+						<span class="stage__btn-txt">Choose stage</span>
+						<span class="stage__btn-icon">
+							<svg width="27" height="28">
+								<use xlink:href="#stage-arrow"></use>
+							</svg>
+						</span>				
+					</a>
+				</div>
+			</div>
+			<!-- ITEM-4 END -->
+
+
+			<!-- ITEM-5 START -->
+			<div  data-stage="group-5" class="stage">
+				<div class="stage__title">IPO/exit</div>
+				<div class="stage__content">
+					<p>Start your journey by safeguarding your startup from unexpected issues straight from the beginning. This stage is typically financed by family, co-founders, or accelerators, and legal structuring is deemed unimportant.</p>
+					<p>Start your journey by safeguarding your startup from unexpected issues straight from the beginning. This stage is typically financed by family, co-founders, or accelerators, and legal structuring is deemed unimportant.</p>
+				</div>
+				<div class="stage__footer">
+					<a href="#" class="stage__btn">
+						<span class="stage__btn-txt">Choose stage</span>
+						<span class="stage__btn-icon">
+							<svg width="27" height="28">
+								<use xlink:href="#stage-arrow"></use>
+							</svg>
+						</span>				
+					</a>
+				</div>
+			</div>
+			<!-- ITEM-5 END -->
+		</div>
+	</div>
+
+	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+		<symbol id="stage-arrow" viewBox="0 0 27 28" fill="none" stroke="currentColor">
+			<path d="M0.66333 13.8962L25.4557 13.8962M25.4557 13.8962L13.6633 1.39624M25.4557 13.8962L13.6633 26.3962" stroke-width="3" stroke-linejoin="round"/>
+		</symbol>
+	</svg>
+</div>
+ <!-- STAGE-CONTAINER END -->
+
+
+<script>
+	window.addEventListener('load', function() {
+
+		let diagram = document.querySelector('.js-diagram');
+
+		diagram.addEventListener('mouseover', function(e) {
+
+			let target = e.target;
+
+			if ( target.hasAttribute('data-group') ) {
+				let name = target.dataset.group;
+				let nameCircle = document.querySelector('[data-name=' + name + ']');
+
+				nameCircle.classList.add('is-hover');
+
+				target.addEventListener('mouseout', function() {
+					nameCircle.classList.remove('is-hover');
+				});
+			}
+		
+		});
+
+
+		let buttons = document.querySelectorAll('[data-group]');
+		let circles = document.querySelectorAll('[data-name]');
+		let stages = document.querySelectorAll('[data-stage]');
+
+		diagram.addEventListener('click', function(e) {
+			let target = e.target;
+
+			if ( target.hasAttribute('data-group') ) {
+
+				circles.forEach(function (elem) {
+					elem.classList.remove('is-active');
+				});
+
+				buttons.forEach(function (elem) {
+					elem.classList.remove('is-active');
+				});
+
+				stages.forEach(function (elem) {
+					elem.classList.remove('is-show');
+				});
+
+				let name = target.dataset.group;
+				let nameCircle = document.querySelector('[data-name=' + name + ']');
+				let nameStage = document.querySelector('[data-stage=' + name + ']');
+
+				target.classList.add('is-active');
+				nameCircle.classList.add('is-active');
+				nameStage.classList.add('is-show');
+			}
+		});
+
+	});
+</script>		
